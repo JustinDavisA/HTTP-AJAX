@@ -14,11 +14,44 @@ class App extends Component {
   }
   
   componentDidMount() {
-    axios.get('http://localhost:5000/friends')
+    axios
+      .get('http://localhost:5000/friends')
       .then(res => this.setState({ friends: res.data }))
-      .then(err => console.log(err)
+      .catch(err => console.log(err)
     );
   }
+
+  addFriend = (e, friend) => {
+    e.preventDefault();
+    axios
+      .post('http://localhost:5000/friends', friend)
+      .then(res => {
+        this.setState({
+          friends: res.data
+        });
+        this.props.history.push('/friends-list');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  deleteFriend = (e, id) => {
+    e.preventDefault();
+    console.log('now in deleteFriend in App');
+    axios
+      .delete(`http://localhost:5000/friends/${id}`)
+      .then(res => {
+        console.log('Data is back, now set state and reroute', res.data);
+        this.setState({
+          friends: res.data
+        });
+        this.props.history.push('/friends-list');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   render() {
     return (

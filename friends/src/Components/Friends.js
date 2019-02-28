@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Friend from './Friend';
+import NewFriend from './NewFriend';
 
 const Friends = ({ friends }) => {
     return(
@@ -11,6 +12,9 @@ const Friends = ({ friends }) => {
                     key = {friend.id}
                 />
             ))}
+            <NewFriend 
+                
+            />
         </div>
     )
 }
