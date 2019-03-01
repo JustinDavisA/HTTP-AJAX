@@ -29,7 +29,7 @@ class App extends Component {
         this.setState({
           friends: res.data
         });
-        this.props.history.push('/friends-list');
+        this.props.history.push('/friends');
       })
       .catch(err => {
         console.log(err);
@@ -46,7 +46,7 @@ class App extends Component {
         this.setState({
           friends: res.data
         });
-        this.props.history.push('/friends-list');
+        this.props.history.push('/friends');
       })
       .catch(err => {
         console.log(err);
